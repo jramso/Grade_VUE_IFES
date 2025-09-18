@@ -1,0 +1,183 @@
+/* --- Reset Básico e Variáveis de Cores --- */
+:root {
+  --color-bg: #f8f9fa;
+  --color-surface: #ffffff;
+  --color-text-primary: #212529;
+  --color-text-secondary: #6c757d;
+  --color-border: #dee2e6;
+  --color-header-bg: #f1f3f5;
+
+  /* Cores das áreas de conhecimento */
+  --area-core: #0077b6;
+  --area-programming: #fca311;
+  --area-math: #2a9d8f;
+  --area-management: #e63946;
+  --area-humanities: #8338ec;
+  --area-systems: #8eb3d4;
+  --area-web: #f48c06;
+  --area-elective: #1a1a1a;
+
+  /* Cores de Status */
+  --status-done-bg: #d1fae5;
+  --status-done-border: #10b981;
+  --status-doing-bg: #dbeafe;
+  --status-doing-border: #3b82f6;
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+/* --- Estilos Globais --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* --- Cabeçalho e Instruções --- */
+.header h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  max-width: 800px;
+  margin-bottom: 0;
+}
+
+.instructions {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.status-legend {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 99px;
+  background-color: var(--color-header-bg);
+  box-shadow: var(--shadow-sm);
+}
+
+.status-legend .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot.todo {
+  background-color: transparent;
+  border: 2px solid var(--color-border);
+}
+
+.dot.doing {
+  background-color: var(--status-doing-border);
+}
+
+.dot.done {
+  background-color: var(--status-done-border);
+}
+
+/* --- Layout Principal da Grade --- */
+.grid-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  /* Espaço entre as duas fileiras */
+  padding: 1.5rem;
+  flex-grow: 1;
+  width: 100%;
+  max-width: 1400px;
+  /* Limita a largura máxima em telas grandes */
+  margin: 0 auto;
+  /* Centraliza o conteúdo */
+}
+
+.grid-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+/* --- Colunas dos Períodos (Kanban) --- */
+.period-column {
+  background-color: var(--color-header-bg);
+  border-radius: 12px;
+  padding: 0.75rem;
+  transition: background-color 0.2s ease-in-out;
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.period-column.drag-over {
+  background-color: var(--status-doing-bg);
+  border-color: var(--status-doing-border);
+}
+
+.period-column h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.75rem;
+}
+
+.cards-container {
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex-grow: 1;
+}
+
+/* --- Cards das Disciplinas --- */
+
+
+/* --- Responsividade --- */
+@media (max-width: 1024px) {
+  .grid-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-wrapper {
+    padding: 1rem;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid-row {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-content {
+    text-align: center;
+  }
+}

@@ -1,0 +1,105 @@
+/* Otimizado para um layout limpo em A4 Retrato (escala 100%) */
+@page {
+    margin: 1.2cm;
+}
+
+/* Garante que o cálculo de largura dos elementos seja consistente */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff !important;
+    color: #000 !important;
+    font-size: 7.5pt;
+    /* Força a impressão das cores de fundo */
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+}
+
+/* Esconde elementos da interface */
+.header {
+    display: none !important;
+}
+
+/* Adiciona um título visível no topo da página de impressão */
+body::before {
+    content: "Planejamento de Grade Curricular";
+    display: block;
+    text-align: center;
+    font-size: 14pt;
+    font-weight: bold;
+    margin-bottom: 0.8cm;
+}
+
+/* Usando Grid em vez de Flex para um layout de impressão mais robusto */
+.grid-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Cria duas colunas de largura igual */
+    gap: 0.8cm;
+    padding: 0;
+}
+
+.grid-row {
+    /* Faz com que as colunas se tornem parte direta do grid do wrapper */
+    display: contents;
+}
+
+.period-column {
+    background-color: transparent !important;
+    border: 1px solid #ccc;
+    box-shadow: none;
+    padding: 0.4cm;
+    page-break-inside: avoid;
+    /* Essencial: não quebra a coluna entre páginas */
+}
+
+.period-column h2 {
+    font-size: 10pt;
+    font-weight: bold;
+    background-color: #eee !important;
+    color: #000 !important;
+    padding: 0.2cm;
+    margin: -0.4cm -0.4cm 0.4cm -0.4cm;
+    border-bottom: 1px solid #ccc;
+}
+
+.cards-container {
+    gap: 0.2cm;
+    display: flex;
+    flex-direction: column;
+}
+
+.subject-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    border-left-width: 4px;
+    padding: 0.2cm;
+    page-break-inside: avoid;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+}
+
+/* Cores e estilos para os status dos cards na impressão */
+.subject-card.status-doing {
+    background-color: #dbeafe !important;
+}
+
+.subject-card.status-done {
+    background-color: #d1fae5 !important;
+    opacity: 0.8;
+    text-decoration: line-through;
+}
+
+.card-name {
+    font-size: 7pt;
+}
+
+.card-hours {
+    font-size: 6.5pt;
+}
+
+.card-tag {
+    font-size: 6pt;
+}

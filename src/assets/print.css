@@ -1,12 +1,14 @@
 /* Otimizado para um layout limpo em A4 Retrato (escala 100%) */
 @page {
-    margin: 1.2cm;
+    margin: 0.9cm;
 }
 
 /* Garante que o cálculo de largura dos elementos seja consistente */
 * {
     box-sizing: border-box;
 }
+
+
 
 body {
     background-color: #fff !important;
@@ -22,15 +24,10 @@ body {
     display: none !important;
 }
 
-/* Adiciona um título visível no topo da página de impressão */
-body::before {
-    content: "Planejamento de Grade Curricular";
-    display: block;
-    text-align: center;
-    font-size: 14pt;
-    font-weight: bold;
-    margin-bottom: 0.8cm;
+.view-header {
+    display: none !important;
 }
+
 
 /* Usando Grid em vez de Flex para um layout de impressão mais robusto */
 .grid-wrapper {

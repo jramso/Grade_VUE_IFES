@@ -4,12 +4,12 @@ import OutraGradeView from "../views/gradeAntiga.vue";
 
 const routes = [
   {
-    path: "/GRADE_VUE_IFES",
+    path: "/",
     name: "GradePrincipal",
     component: GradeNova,
   },
   {
-    path: "/GRADE_VUE_IFES/outra-grade",
+    path: "/outra-grade",
     name: "OutraGrade",
     component: OutraGradeView,
   },

@@ -2,12 +2,14 @@
   <!-- O header contém os elementos que aparecem em TODAS as páginas -->
   <header class="header">
     <div class="header-content">
-      <h1>Planejador de Grade Curricular</h1>
+      <h1>
+        <img src="./assets/ifes_logo.png" alt="Logo IFES" style="height: 45px; margin-right: 15px;" />
+        Organize sua Grade Curricular</h1>
     </div>
     <nav class="main-nav">
       <!-- Links que trocam de página -->
-      <RouterLink to="/GRADE_VUE_IFES">Grade Nova (IFES)</RouterLink>
-      <RouterLink to="/GRADE_VUE_IFES/outra-grade">Grade Antiga</RouterLink>
+      <RouterLink to="/">Grade Nova (IFES)</RouterLink>
+      <RouterLink to="/outra-grade">Grade Antiga</RouterLink>
     </nav>
     <div class="header-actions">
        <button @click="printPage" class="print-button">Imprimir / Salvar PDF</button>
@@ -15,10 +17,15 @@
   </header>
 
   <RouterView />
+
+  <Footer />
+
+  
 </template>
 
 <script setup>
 import { RouterLink, RouterView } from 'vue-router';
+import Footer from './components/Footer.vue';
 
 // A função de impressão é global, então pode ficar aqui.
 function printPage() {

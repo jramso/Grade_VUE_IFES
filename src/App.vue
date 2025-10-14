@@ -6,8 +6,8 @@
     </div>
     <nav class="main-nav">
       <!-- Links que trocam de página -->
-      <RouterLink to="/">Grade Nova (IFES)</RouterLink>
-      <RouterLink to="/outra-grade">Grade Antiga</RouterLink>
+      <RouterLink to="/GRADE_VUE_IFES/">Grade Nova (IFES)</RouterLink>
+      <RouterLink to="/GRADE_VUE_IFES/outra-grade">Grade Antiga</RouterLink>
     </nav>
     <div class="header-actions">
        <button @click="printPage" class="print-button">Imprimir / Salvar PDF</button>
